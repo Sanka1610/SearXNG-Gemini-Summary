@@ -6,6 +6,8 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 
 検索クエリと検索結果スニペットを収集し、Geminiが生成した情報を、検索結果上部に表示します。
 
+## 特徴
+
 
 
 
@@ -51,17 +53,6 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 - 利用するSearXNGインスタンスのURLによつては対応しない場合があります。
 
 - その場合は .user.js 内の @match を修正してください。
-
-
-
-
-
-
-
-
-
-
-
 
 ## 動作機構
 
@@ -115,56 +106,20 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 
 - 処理終了
 
+## クレジット
 
+- Google Gemini API公式ドキュメント
 
+- SearxNG
 
+- Violentmonkey
 
+- Tampermonkey
 
-
-
-
-
-
-
-
-
----
-
-実装ポイント
-
-fetch で Gemini API (generateContent) を呼び出し
-
-検索結果スニペットを収集してプロンプトを生成
-
-APIキーはAES-GCMで暗号化して localStorage に保存
-
-ダークモードは matchMedia('(prefers-color-scheme: dark)') で判定
-
-応答JSONをパースしてHTMLに整形
-
-セクション・出典URL付きで表示
-
-キャッシュ機能あり（sessionStorage、7日間有効）
-
-
-
----
-
-関連リンク
-
-Google Gemini API (PaLM) 公式ドキュメント
-
-SearxNG GitHub
-
-Violentmonkey
-
-Tampermonkey
-
-
-
----
+- [SearXNGにGemini AIの回答を表示✨️](https://github.com/koyasi777/searxng-gemini-answer-injector)
 
 ## ライセンス
 
-MIT License
-自由に改変・再配布可能ですが、使用は自己責任でお願いします。
+- MIT License
+
+  - 自由に改変・再配布可能ですが、使用は自己責任でお願いします。
