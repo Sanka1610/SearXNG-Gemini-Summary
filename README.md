@@ -6,6 +6,63 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 
 検索クエリと検索結果スニペットを収集し、Geminiが生成した情報を、検索結果上部に表示します。
 
+
+
+
+
+## インストール方法
+
+- 1.ブラウザに、いずれかのユーザースクリプトの拡張機能をインストールします。
+
+  - **[Violentmonkey](https://violentmonkey.github.io/)**
+
+  - **[Tampermonkey](https://www.tampermonkey.net/)**
+
+- 2.下記リンクから、スクリプトをインストールします。
+
+  - **[SearXNG Gemini Summary]()**
+
+- 3.APIキーを入力
+
+  - 初回検索時のみ、Gemini APIキーの入力が必要です。
+
+  - **[Google AI Studio](https://aistudio.google.com/api-keys)** でAPIキーを取得してください。
+
+## 対応サイト
+
+- @match
+
+  - *://*/searx/search*
+ 
+  - *://*/searxng/search*
+ 
+  - *://searx.*/*
+ 
+  - *://*.searx.*/*
+ 
+  - https://search.charleseroop.com/*
+ 
+  - https://opnxng.com/*
+ 
+  - http://127.0.0.1:8888/search*
+ 
+  - http://localhost:8888/search*
+
+- 利用するSearXNGインスタンスのURLによつては対応しない場合があります。
+
+- その場合は .user.js 内の @match を修正してください。
+
+
+
+
+
+
+
+
+
+
+
+
 ## 動作機構
 
 ### 1.ページ判定
@@ -69,33 +126,6 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 
 
 
-## インストール
-
-1. ブラウザに Violentmonkey または Tampermonkey をインストール
-
-
-2. 下記リンクからスクリプトをインストール
-SearXNG Gemini Summary
-
-
-3. 初回使用時に Gemini APIキー の入力が必要
-Google AI StudioでAPIキーを取得
-
-
-
-## 対応サイト
-
-- // @match        *://*/searx/search*
-- // @match        *://*/searxng/search*
-- // @match        *://searx.*/*
-- // @match        *://*.searx.*/*
-- // @match        https://search.charleseroop.com/*
-- // @match        https://opnxng.com/*
-- // @match        http://127.0.0.1:8888/search*
-- // @match        http://localhost:8888/search*
-
-- 利用するSearXNGインスタンスのURLによつては対応しない場合があります。
-- その場合は .user.js 内の @match を修正してください。
 
 
 ---
