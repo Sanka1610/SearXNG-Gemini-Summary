@@ -1,84 +1,110 @@
-# SearXNG Gemini Summary
+SearXNG Gemini Summary
 
-## 概要
+概要
 
-**SearXNG**の検索結果ページに、**Gemini** による概要を表示するユーザースクリプトです。  
+SearXNGの検索結果ページに、Google Gemini のAIによる簡潔な概要を表示するユーザースクリプトです。
+検索クエリと検索結果スニペットをもとにGeminiが生成した情報を、検索結果上部に自然に表示します。
 
-検索ワードに応じて、Geminiが生成したHTML形式の簡潔かつ信頼性の高い情報を表示します。
+APIキーはローカルストレージに保存、再入力可
 
-- APIキーはローカルストレージに保存（再入力可）
-- ダークモードにも自動対応
-- 表示位置は検索結果最上部、自然に溶け込むスタイル
+ダークモードに対応
+
+検索結果最上部に表示
 
 
-
-## インストール方法
-
-1. お使いのブラウザに**[Violentmonkey](https://violentmonkey.github.io/) または [Tampermonkey](https://www.tampermonkey.net/)** をインストール
-
-3. 下記リンクからスクリプトをインストール
-
-[このスクリプトをインストールする](https://raw.githubusercontent.com/koyasi777/searxng-gemini-answer-injector/main/searxng-gemini-answer.user.js)
-
-5. 最初の利用時に **Gemini APIキー** の入力を求められます。以下のURLから取得してください：
-
-   https://aistudio.google.com/app/apikey?hl=ja
 
 ---
 
-## 主な機能
+インストール方法
 
-- クエリ文字列を自動取得し、Geminiに送信
-- GeminiのHTML形式の回答を検索結果上部に追加
-- APIキーはローカルに保存（`localStorage`）
-- APIキーの再入力・変更にも対応
-- CORSやGM_系のgrant不要（`fetch`使用）
+1. ブラウザに Violentmonkey または Tampermonkey をインストール
+
+
+2. 下記リンクからスクリプトをインストール
+SearXNG Gemini Summary
+
+
+3. 初回使用時に Gemini APIキー の入力が必要
+Google AI StudioでAPIキーを取得
+
+
+
 
 ---
 
-## 🖼 対応サイト
+主な機能
 
-多数のSearXNGインスタンスに対応するため、`@match` を以下のように広く指定しています：
+検索クエリを自動取得してGeminiに送信
 
-```js
+GeminiのHTML形式の回答を検索結果上部に表示
+
+APIキーを暗号化してローカルに保存
+
+APIキーの再入力・変更に対応
+
+fetchを利用してCORSやGM_系grant不要
+
+
+
+---
+
+対応サイト
+
 // @match        *://*/searx/search*
 // @match        *://*/searxng/search*
 // @match        *://searx.*/*
 // @match        *://*.searx.*/*
-```
+// @match        https://search.charleseroop.com/*
+// @match        https://opnxng.com/*
+// @match        http://127.0.0.1:8888/search*
+// @match        http://localhost:8888/search*
 
-⚠️ **ご自身の利用しているSearXNGのドメインによっては、このマッチ条件に含まれない場合があります。**  
-その場合は `.user.js` ファイル内の `@match` 行を手動で修正し、ご自身の環境に合わせてください。
+⚠️ 利用するSearXNGインスタンスによりマッチしない場合があります。その場合は .user.js 内の @match を修正してください。
 
----
-
-## 🧠 技術構成・実装ポイント
-
-- `fetch` による Gemini API (`generateContent`) 呼び出し
-- `localStorage` にAPIキーを保存／再取得
-- 検索クエリを `input[name="q"]` から抽出
-- ダークモード判定には `matchMedia('(prefers-color-scheme: dark)')`
-- スタイルはネイティブUIに自然に溶け込むよう設計
-- 応答がなければ再試行、401/403時は再入力を促す設計
 
 ---
 
-## 🔗 関連リンク
+実装ポイント
 
-- [Google Gemini API (PaLM) 公式ドキュメント](https://ai.google.dev/)
-- [SearxNG GitHub](https://github.com/searxng/searxng)
-- [Violentmonkey](https://violentmonkey.github.io/)
-- [Tampermonkey](https://www.tampermonkey.net/)
+fetch で Gemini API (generateContent) を呼び出し
+
+検索結果スニペットを収集してプロンプトを生成
+
+APIキーはAES-GCMで暗号化して localStorage に保存
+
+ダークモードは matchMedia('(prefers-color-scheme: dark)') で判定
+
+応答JSONをパースしてHTMLに整形
+
+セクション・出典URL付きで表示
+
+キャッシュ機能あり（sessionStorage、7日間有効）
+
+
 
 ---
 
-## 📜 ライセンス
+関連リンク
 
-MIT License  
-自由に改変・再配布いただけますが、利用は自己責任でお願いします。
+Google Gemini API (PaLM) 公式ドキュメント
+
+SearxNG GitHub
+
+Violentmonkey
+
+Tampermonkey
+
+
 
 ---
 
-> SearXNGを、GeminiでAI強化！  
-> クエリに対して信頼できる情報を、即座に表示。
+ライセンス
+
+MIT License
+自由に改変・再配布可能ですが、使用は自己責任でお願いします.
+
+
+---
+
+SearXNGの検索結果をGeminiで即時強化。検索クエリに対して信頼できる情報を簡潔に表示します。
 
