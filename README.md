@@ -6,11 +6,17 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 
 検索クエリと検索結果スニペットを収集し、Geminiが生成した情報を、検索結果上部に表示します。
 
+「[SearXNGにGemini AIの回答を表示✨️](https://github.com/koyasi777/searxng-gemini-answer-injector)」に発想を得て作成されました。
+
 ## 特徴
 
+- 検索クエリと検索結果を収集し、Geminiが生成した情報を、検索結果上部に表示します。
 
+- Gemini APIキーを暗号化して保存し、安全性を高めます。
 
+  - 暗号化キーは変更可能です。必要に応じて変更してください。
 
+- 
 
 ## インストール方法
 
@@ -24,13 +30,19 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 
   - **[SearXNG Gemini Summary]()**
 
-- 3.APIキーを入力
+- 3.APIキーを入力します。
 
   - 初回検索時のみ、Gemini APIキーの入力が必要です。
 
   - **[Google AI Studio](https://aistudio.google.com/api-keys)** でAPIキーを取得してください。
 
 ## 対応サイト
+
+- .user.js 内の @match で対応サイトを指定しています。
+
+- 利用するSearXNGインスタンスのURLによっては対応しない場合があります。
+
+- 必要に応じて変更・追加してください。
 
 - @match
 
@@ -50,10 +62,6 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
  
   - http://localhost:8888/search*
 
-- 利用するSearXNGインスタンスのURLによっては対応しない場合があります。
-
-- 対応していない場合、 .user.js 内の @match に追加してください。
-
 ## 動作機構
 
 ### 1.ページ判定
@@ -63,6 +71,7 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 ### 2.APIをキー取得
 
 - LocalStorageから暗号化キーを取得し、APIキーを復元
+
 - 存在しなければ、ユーザーにAPIキーの入力を求める
 
 ### 3.検索クエリを取得
@@ -72,8 +81,8 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 ### 4.キャッシュ確認
 
 - キャッシュに同じクエリがあるかチェック
-  - あれば、キャッシュを表示して終了
-  - ないければ、次へ
+
+  - あれば、キャッシュを取得しそのまま表示
 
 ### 5.UIを構築
 
@@ -82,12 +91,15 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 ### 6.スニペットを取得
 
 - 最大(MAX_RESULTS)件まで取得
+
 - 足りなければ、次のページ分のスニペットを取得
+
 - 各検索結果から必要なテキストのみ取得
 
 ### 7.プロンプトを作成
 
 - クエリ + スニペット + 概要の作成指示で構成されたプロンプトを作成
+
 - JSON形式で出力を指定
 
 ### 8.Gemini API呼び出し
@@ -97,24 +109,26 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 ### 9.JSON解析
 
 - Geminiの応答からJSONを抽出
+
 - JSONからHTMLに変形
 
 ### 10.概要表示
 
 - 導入文・セクション・出典を整形して表示
+
 - キャッシュを更新
 
 - 処理終了
 
 ## クレジット
 
-- Google Gemini API公式ドキュメント
+- [Google Gemini API 公式ドキュメント](https://ai.google.dev/)
 
-- SearxNG
+- [SearXNG](https://github.com/searxng/searxng)
 
-- Violentmonkey
+- [Violentmonkey](https://violentmonkey.github.io/)
 
-- Tampermonkey
+- [Tampermonkey](https://www.tampermonkey.net/)
 
 - [SearXNGにGemini AIの回答を表示✨️](https://github.com/koyasi777/searxng-gemini-answer-injector)
 
