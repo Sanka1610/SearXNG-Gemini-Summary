@@ -42,7 +42,7 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 
   - **[Google AI Studio](https://aistudio.google.com/api-keys)** でAPIキーを取得してください。
  
-##　暗号化について
+## 暗号化について
 
 - 暗号化キーは、スクリプト内に記された32バイトの文字列です。
 
