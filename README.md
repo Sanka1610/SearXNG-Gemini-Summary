@@ -29,7 +29,7 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 
 - 2.下記リンクから、スクリプトをインストールします。
 
-  - **[SearXNG Gemini Summary]()**
+  - **[SearXNG Gemini Summary](https://greasyfork.org/ja/scripts/552122-searxng-gemini-summary)**
  
 - 3.スクリプト内の設定を変更します。
 
@@ -106,7 +106,7 @@ SearXNGの検索結果ページに、Geminiによる概要を表示するユー�
 
 ### 6.スニペットを取得
 
-- 最大(デフォルトは20件)件まで取得
+- 最大(デフォルトは20件)まで取得
 
 - 足りなければ、次のページ分のスニペットを取得
 
